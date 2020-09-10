@@ -79,30 +79,30 @@ return;
 try
 {
 File file=new File(DATA_FILE);
-RandomAccessFile raf;
-raf=new RandomAccessFile(file,"rw");
+RandomAccessFile randomAccessFile;
+randomAccessFile=new RandomAccessFile(file,"rw");
 String fMobileNumber;
-while(raf.getFilePointer()<raf.length())
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
+fMobileNumber=randomAccessFile.readLine();
 if(fMobileNumber.equalsIgnoreCase(mobileNumber))
 {
-raf.close();
+randomAccessFile.close();
 System.out.println(mobileNumber+" already exists");
 return;
 }
-raf.readLine(); // reading three times because in file
-raf.readLine(); // after mobile number there are 3 more datas
-raf.readLine(); // name, course and fee
+randomAccessFile.readLine(); // reading three times because in file
+randomAccessFile.readLine(); // after mobile number there are 3 more datas
+randomAccessFile.readLine(); // name, course and fee
 }
-raf.writeBytes(mobileNumber);
-raf.writeBytes("\n");
-raf.writeBytes(name);
-raf.writeBytes("\n");
-raf.writeBytes(course);
-raf.writeBytes("\n");
-raf.writeBytes(String.valueOf(fee));
-raf.writeBytes("\n");
+randomAccessFile.writeBytes(mobileNumber);
+randomAccessFile.writeBytes("\n");
+randomAccessFile.writeBytes(name);
+randomAccessFile.writeBytes("\n");
+randomAccessFile.writeBytes(course);
+randomAccessFile.writeBytes("\n");
+randomAccessFile.writeBytes(String.valueOf(fee));
+randomAccessFile.writeBytes("\n");
 }catch(IOException iOException)
 {
 System.out.println(iOException.getMessage());
@@ -120,12 +120,12 @@ if(file.exists()==false)
 System.out.println("No Member");
 return;
 }
-RandomAccessFile raf;
-raf=new RandomAccessFile(file,"rw");
-if(raf.length()==0)
+RandomAccessFile randomAccessFile;
+randomAccessFile=new RandomAccessFile(file,"rw");
+if(randomAccessFile.length()==0)
 {
 System.out.println("No Member");
-raf.close();
+randomAccessFile.close();
 return;
 }
 String mobileNumber;
@@ -134,17 +134,17 @@ String course;
 int fee;
 int memberCount=0;
 int totalFee=0;
-while(raf.getFilePointer()<raf.length())
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-mobileNumber=raf.readLine();
-name=raf.readLine();
-course=raf.readLine();
-fee=Integer.parseInt(raf.readLine());
+mobileNumber=randomAccessFile.readLine();
+name=randomAccessFile.readLine();
+course=randomAccessFile.readLine();
+fee=Integer.parseInt(randomAccessFile.readLine());
 System.out.printf("%s, %s, %s, %d\n",mobileNumber,name,course,fee);
 totalFee+=fee;
 memberCount++;
 }
-raf.close();
+randomAccessFile.close();
 System.out.println("Total registrations- "+memberCount);
 System.out.println("Total fee collected- "+totalFee);
 }catch(IOException iOException)
@@ -170,11 +170,11 @@ if(file.exists()==false)
 System.out.println("Invalid contact number");
 return;
 }
-RandomAccessFile raf;
-raf=new RandomAccessFile(file,"rw");
-if(raf.length()==0)
+RandomAccessFile randomAccessFile;
+randomAccessFile=new RandomAccessFile(file,"rw");
+if(randomAccessFile.length()==0)
 {
-raf.close();
+randomAccessFile.close();
 System.out.println("Invalid contact number");
 return;
 }
@@ -183,22 +183,22 @@ String fName="";
 String fCourse="";
 int fFee=0;
 boolean found=false;
-while(raf.getFilePointer()<raf.length())
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
+fMobileNumber=randomAccessFile.readLine();
 if(fMobileNumber.equalsIgnoreCase(mobileNumber))
 {
-fName=raf.readLine();
-fCourse=raf.readLine();
-fFee=Integer.parseInt(raf.readLine());
+fName=randomAccessFile.readLine();
+fCourse=randomAccessFile.readLine();
+fFee=Integer.parseInt(randomAccessFile.readLine());
 found=true;
 break;
 }
-raf.readLine();
-raf.readLine();
-raf.readLine();
+randomAccessFile.readLine();
+randomAccessFile.readLine();
+randomAccessFile.readLine();
 }
-raf.close();
+randomAccessFile.close();
 if(found==false)
 {
 System.out.println("Invalid contact number");
@@ -236,11 +236,11 @@ if(file.exists()==false)
 System.out.println("No registration against course "+course);
 return;
 }
-RandomAccessFile raf;
-raf=new RandomAccessFile(file,"rw");
-if(raf.length()==0)
+RandomAccessFile randomAccessFile;
+randomAccessFile=new RandomAccessFile(file,"rw");
+if(randomAccessFile.length()==0)
 {
-raf.close();
+randomAccessFile.close();
 System.out.println("No registration against course "+course);
 return;
 }
@@ -249,12 +249,12 @@ String fName="";
 String fCourse="";
 int fFee=0;
 boolean found=false;
-while(raf.getFilePointer()<raf.length())
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
-fName=raf.readLine();
-fCourse=raf.readLine();
-fFee=Integer.parseInt(raf.readLine());
+fMobileNumber=randomAccessFile.readLine();
+fName=randomAccessFile.readLine();
+fCourse=randomAccessFile.readLine();
+fFee=Integer.parseInt(randomAccessFile.readLine());
 if(course.equalsIgnoreCase(fCourse))
 {
 System.out.println("Contact Number: "+fMobileNumber);
@@ -265,7 +265,7 @@ System.out.print("\n");
 found=true;
 }
 }
-raf.close();
+randomAccessFile.close();
 if(found==false)
 {
 System.out.println("No registration against course "+course);
@@ -310,10 +310,10 @@ if(file.exists()==false)
 System.out.println("Invalid contact number "+mobileNumber);
 return;
 }
-RandomAccessFile raf= new RandomAccessFile(file,"rw");
-if(raf.length()==0)
+RandomAccessFile randomAccessFile= new RandomAccessFile(file,"rw");
+if(randomAccessFile.length()==0)
 {
-raf.close();
+randomAccessFile.close();
 System.out.println("Invalid contact number "+mobileNumber);
 return;
 }
@@ -322,12 +322,12 @@ String fMobileNumber="";
 String fName="";
 String fCourse="";
 int fFee=0;
-while(raf.getFilePointer()<raf.length())
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
-fName=raf.readLine();
-fCourse=raf.readLine();
-fFee=Integer.parseInt(raf.readLine());
+fMobileNumber=randomAccessFile.readLine();
+fName=randomAccessFile.readLine();
+fCourse=randomAccessFile.readLine();
+fFee=Integer.parseInt(randomAccessFile.readLine());
 if(fMobileNumber.equalsIgnoreCase(mobileNumber))
 {
 found=true;
@@ -337,47 +337,47 @@ break;
 if(found==false)
 {
 System.out.println("Invalid Contact Number "+mobileNumber);
-raf.close();
+randomAccessFile.close();
 return;
 }
 System.out.println("Updating data of contact number- "+mobileNumber);
 System.out.println("Name of candidate is: "+fName);
 File tempFile=new File("tmp.tmp");
-RandomAccessFile tempRaf=new RandomAccessFile(tempFile,"rw");
-tempRaf.setLength(0);
-raf.seek(0); //To move pointer at the beginning of file
-while(raf.getFilePointer()<raf.length())
+RandomAccessFile tempRandomAccessFile=new RandomAccessFile(tempFile,"rw");
+tempRandomAccessFile.setLength(0);
+randomAccessFile.seek(0); //To move pointer at the beginning of file
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
-fName=raf.readLine();
-fCourse=raf.readLine();
-fFee=Integer.parseInt(raf.readLine());
+fMobileNumber=randomAccessFile.readLine();
+fName=randomAccessFile.readLine();
+fCourse=randomAccessFile.readLine();
+fFee=Integer.parseInt(randomAccessFile.readLine());
 if(fMobileNumber.equalsIgnoreCase(mobileNumber)==false)
 {
-tempRaf.writeBytes(fMobileNumber+"\n");
-tempRaf.writeBytes(fName+"\n");
-tempRaf.writeBytes(fCourse+"\n");
-tempRaf.writeBytes(fFee+"\n");
+tempRandomAccessFile.writeBytes(fMobileNumber+"\n");
+tempRandomAccessFile.writeBytes(fName+"\n");
+tempRandomAccessFile.writeBytes(fCourse+"\n");
+tempRandomAccessFile.writeBytes(fFee+"\n");
 }
 else
 {
-tempRaf.writeBytes(mobileNumber+"\n");
-tempRaf.writeBytes(name+"\n");
-tempRaf.writeBytes(course+"\n");
-tempRaf.writeBytes(fee+"\n");
+tempRandomAccessFile.writeBytes(mobileNumber+"\n");
+tempRandomAccessFile.writeBytes(name+"\n");
+tempRandomAccessFile.writeBytes(course+"\n");
+tempRandomAccessFile.writeBytes(fee+"\n");
 }
 }
-raf.setLength(0);
-raf.seek(0);
-tempRaf.seek(0);
-while(tempRaf.getFilePointer()<tempRaf.length())
+randomAccessFile.setLength(0);
+randomAccessFile.seek(0);
+tempRandomAccessFile.seek(0);
+while(tempRandomAccessFile.getFilePointer()<tempRandomAccessFile.length())
 {
-raf.writeBytes(tempRaf.readLine()+"\n");
+randomAccessFile.writeBytes(tempRandomAccessFile.readLine()+"\n");
 }
-raf.setLength(tempRaf.length());
-tempRaf.setLength(0);
-raf.close();
-tempRaf.close();
+randomAccessFile.setLength(tempRandomAccessFile.length());
+tempRandomAccessFile.setLength(0);
+randomAccessFile.close();
+tempRandomAccessFile.close();
 System.out.println("Data updated");
 }catch(IOException ioe)
 {
@@ -402,10 +402,10 @@ if(file.exists()==false)
 System.out.println("Invalid contact number "+mobileNumber);
 return;
 }
-RandomAccessFile raf= new RandomAccessFile(file,"rw");
-if(raf.length()==0)
+RandomAccessFile randomAccessFile= new RandomAccessFile(file,"rw");
+if(randomAccessFile.length()==0)
 {
-raf.close();
+randomAccessFile.close();
 System.out.println("Invalid contact number "+mobileNumber);
 return;
 }
@@ -414,12 +414,12 @@ String fMobileNumber="";
 String fName="";
 String fCourse="";
 int fFee=0;
-while(raf.getFilePointer()<raf.length())
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
-fName=raf.readLine();
-fCourse=raf.readLine();
-fFee=Integer.parseInt(raf.readLine());
+fMobileNumber=randomAccessFile.readLine();
+fName=randomAccessFile.readLine();
+fCourse=randomAccessFile.readLine();
+fFee=Integer.parseInt(randomAccessFile.readLine());
 if(fMobileNumber.equalsIgnoreCase(mobileNumber))
 {
 found=true;
@@ -429,39 +429,39 @@ break;
 if(found==false)
 {
 System.out.println("Invalid Contact Number "+mobileNumber);
-raf.close();
+randomAccessFile.close();
 return;
 }
 System.out.println("Removing data of contact number- "+mobileNumber);
 System.out.println("Name of candidate is: "+fName);
 File tempFile=new File("tmp.tmp");
-RandomAccessFile tempRaf=new RandomAccessFile(tempFile,"rw");
-tempRaf.setLength(0);
-raf.seek(0); //To move pointer at the beginning of file
-while(raf.getFilePointer()<raf.length())
+RandomAccessFile tempRandomAccessFile=new RandomAccessFile(tempFile,"rw");
+tempRandomAccessFile.setLength(0);
+randomAccessFile.seek(0); //To move pointer at the beginning of file
+while(randomAccessFile.getFilePointer()<randomAccessFile.length())
 {
-fMobileNumber=raf.readLine();
-fName=raf.readLine();
-fCourse=raf.readLine();
-fFee=Integer.parseInt(raf.readLine());
+fMobileNumber=randomAccessFile.readLine();
+fName=randomAccessFile.readLine();
+fCourse=randomAccessFile.readLine();
+fFee=Integer.parseInt(randomAccessFile.readLine());
 if(fMobileNumber.equalsIgnoreCase(mobileNumber)==false)
 {
-tempRaf.writeBytes(fMobileNumber+"\n");
-tempRaf.writeBytes(fName+"\n");
-tempRaf.writeBytes(fCourse+"\n");
-tempRaf.writeBytes(fFee+"\n");
+tempRandomAccessFile.writeBytes(fMobileNumber+"\n");
+tempRandomAccessFile.writeBytes(fName+"\n");
+tempRandomAccessFile.writeBytes(fCourse+"\n");
+tempRandomAccessFile.writeBytes(fFee+"\n");
 }
 }
-raf.seek(0);
-tempRaf.seek(0);
-while(tempRaf.getFilePointer()<tempRaf.length())
+randomAccessFile.seek(0);
+tempRandomAccessFile.seek(0);
+while(tempRandomAccessFile.getFilePointer()<tempRandomAccessFile.length())
 {
-raf.writeBytes(tempRaf.readLine()+"\n");
+randomAccessFile.writeBytes(tempRandomAccessFile.readLine()+"\n");
 }
-raf.setLength(tempRaf.length());
-tempRaf.setLength(0);
-raf.close();
-tempRaf.close();
+randomAccessFile.setLength(tempRandomAccessFile.length());
+tempRandomAccessFile.setLength(0);
+randomAccessFile.close();
+tempRandomAccessFile.close();
 System.out.println("Data deleted");
 }catch(IOException ioe)
 {
